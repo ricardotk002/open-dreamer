@@ -7,7 +7,7 @@ defaults:
   - common
 
   # Raw MP4 dataset config. Tokenizer training expects `data_type: video`.
-  - dataset: minecraft_vpt
+  - dataset: topgear
 
   # Let values below override imported defaults.
   - _self_

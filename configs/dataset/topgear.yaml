@@ -1,0 +1,35 @@
+defaults:
+  - _self_
+
+name: topgear
+data_type: video
+array_record_path: datasets/topgear/train
+num_max_samples: -1
+
+dataloader_cfg:
+  B: 512
+  num_workers: 16
+  prefetch_buffer_size: 10
+  device_prefetch_buffer_size: 1
+  short_T: 64
+  long_T: 64
+  long_ratio: 0.0
+  start_step: 0
+  dtype: bfloat16
+
+H: 140
+W: 160
+C: 3
+
+padding_H: [0, 0]
+padding_W: [0, 0]
+patch_size: 10
+
+num_binary_actions: 12
+categorical_action_dim: 0
+continuous_action_dim: 0
+
+dataset_mean: [0.2413, 0.3242, 0.2451]
+dataset_std: [0.2640, 0.2154, 0.2719]
+
+p_include_reward: 0.0
