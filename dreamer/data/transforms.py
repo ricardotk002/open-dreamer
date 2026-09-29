@@ -219,8 +219,8 @@ class ProcessEpisodeAndSlice(grain.transforms.RandomMap):
         return {
             "videos": seq,
             "actions": Actions(
-                binary=None,
-                categorical=actions_tensor[start_idx : start_idx + self.seq_len],
+                binary=actions_tensor[start_idx : start_idx + self.seq_len],
+                categorical=None,
                 continuous=None,
             ),
             "rewards": rewards_tensor[start_idx : start_idx + self.seq_len],
