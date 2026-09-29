@@ -22,7 +22,7 @@ dataset:
   dataloader_cfg:
     # Global batch size across all JAX processes. Must be divisible by
     # `jax.process_count()` and fit in memory with `long_T`.
-    B: 8
+    B: 2
 
     # Short training window used by tokenizer attention context below.
     # Records must contain at least this many frames.
@@ -43,7 +43,7 @@ tokenizer:
   encoder:
     # Number of learned latent tokens per frame. More latents increase capacity
     # and dynamics cost.
-    n_latents: 512
+    n_latents: 128
 
     # Latent channel width emitted by the encoder. Must match the latent dataset
     # `C`, `latent_mean` length, `latent_std` length, and dynamics d_bottleneck.
