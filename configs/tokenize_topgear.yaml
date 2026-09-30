@@ -2,6 +2,10 @@ defaults:
   - dataset: topgear
   - _self_
 
+dataset:
+  dataloader_cfg:
+    B: 1
+
 tokenizer_ckpt: logs/tokenizer/checkpoints
 output_dir: datasets/topgear_latents
 episode_length: 1000
