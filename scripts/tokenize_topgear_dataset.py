@@ -38,6 +38,7 @@ def make_tokenization_iterator(
     padding_w: tuple[int, int],
     patch_size: int,
     episode_length: int,
+    seed: int = 0,
 ):
     shard_paths = sorted(str(p) for p in Path(input_dir).glob("shard-*.array_record"))
     if not shard_paths:
@@ -52,6 +53,7 @@ def make_tokenization_iterator(
         shard_options=grain.sharding.NoSharding(),
         shuffle=False,
         num_epochs=1,
+        seed=seed,
     )
 
     operations = [
@@ -190,6 +192,7 @@ def run(cfg: DictConfig):
             padding_w=cfg.dataset.padding_W,
             patch_size=cfg.dataset.patch_size,
             episode_length=cfg.episode_length,
+            seed=cfg.seed,
         )
 
         prefetched = build_prefetch_pipeline(
