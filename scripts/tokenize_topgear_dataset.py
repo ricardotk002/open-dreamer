@@ -231,7 +231,10 @@ def run(cfg: DictConfig):
                 batch_size = batch["_batch_size"]
 
                 t0 = time.perf_counter()
-                latents = encode_batch(videos)
+                T = videos.shape[1]
+                chunk = cfg.encode_chunk_frames
+                latent_chunks = [encode_batch(videos[:, s:min(s + chunk, T)]) for s in range(0, T, chunk)]
+                latents = jnp.concatenate(latent_chunks, axis=1)
                 latents.block_until_ready()
                 t1 = time.perf_counter()
 

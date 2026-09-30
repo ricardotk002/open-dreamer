@@ -9,6 +9,7 @@ dataset:
 tokenizer_ckpt: logs/tokenizer/checkpoints
 output_dir: datasets/topgear_latents
 episode_length: 1000
+encode_chunk_frames: 50
 records_per_shard: 5000
 seed: 0
 parallel_strategy: data
