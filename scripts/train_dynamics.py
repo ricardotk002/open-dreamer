@@ -191,8 +191,9 @@ def run(cfg: DynamicsConfig):
 
         # Check if using latent data (pre-tokenized)
         use_latent_data = cfg.dataset.data_type == "latent"
-        assert cfg.dataset.num_binary_actions == NUM_BINARY_ACTIONS
-        assert cfg.dataset.categorical_action_dim == NUM_CAMERA_CLASSES
+        if cfg.dataset.name.startswith("minecraft_vpt"):
+            assert cfg.dataset.num_binary_actions == NUM_BINARY_ACTIONS
+            assert cfg.dataset.categorical_action_dim == NUM_CAMERA_CLASSES
 
         # Load pretrained tokenizer (required for video data, optional for latent data checkpoints)
         tokenizer_bundle = TokenizerCheckpointBundle.from_pretrained(cfg.tokenizer_ckpt, mesh_rules=mesh_rules)
