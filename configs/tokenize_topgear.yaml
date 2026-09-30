@@ -1,0 +1,14 @@
+defaults:
+  - dataset: topgear
+  - _self_
+
+tokenizer_ckpt: logs/tokenizer/checkpoints
+output_dir: datasets/topgear_latents
+episode_length: 1000
+records_per_shard: 5000
+seed: 0
+parallel_strategy: data
+
+hydra:
+  run:
+    dir: .
